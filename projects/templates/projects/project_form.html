@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+
+<!-- Main Section -->
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            
+            
+            <a class="backButton" href="{% url 'account' %}"><i class="im im-angle-left"></i></a>
+            <br>
+
+            <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% endfor %}
+
+                <div class="form__field">
+                    {% for tag in project.tags.all %}
+                    <div class="project-tag tag tag--pill tag--main" data-tag="{{tag.id}}"
+                        data-project="{{project.id}}">{{tag.name}} &#215;</div>
+                    {% endfor %}
+                </div>
+
+                <div class="form__field">
+                    <label for="formInput#text">Теги:</label>
+                    <textarea class="input" name="newtags" placeholder="Добавьте тег..."></textarea>
+                </div>
+                <div class="button-wrapper">
+                <input class="btn-hover color-8" type="submit" value="Сохранить" />
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block footer %}
+    <header class="header">
+        <div class="header__menu">
+            <p class="m-0 text-center text-white">Copyright &copy; Store 2022</p>
+        </div>
+    </footer>
+{% endblock %}
