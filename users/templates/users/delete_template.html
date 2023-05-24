@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <br>
+            <form class="text-center" action="#" method="POST">
+                {% csrf_token %}
+                <p>Вы действительно хотите удалить запись "{{object}}"?</p> 
+                <a class="btn-hover color-5 btn--lg my-md" href="{% url 'account' %}">Вернуться</a>
+                <input class="btn-hover color-11 btn--lg my-md" type="submit" value="Подтвердить" />
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

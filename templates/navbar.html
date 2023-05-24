@@ -1,0 +1,24 @@
+{% load static %}
+
+  <header class="header">
+      <link rel="stylesheet" href="{% static 'css/minor.css'%}" type="text/css">
+      </a>
+      <nav class="header__nav">
+        <input type="checkbox" id="responsive-menu" />
+        <label for="responsive-menu" class="toggle-menu">
+          <span>Меню</span>
+          <div class="toggle-menu__lines"></div>
+        </label>
+        <ul class="header__menu">
+          <a class="link-1" href="{% url 'profiles' %}">Пользователи</a>
+          <a class="link-1" href="{% url 'projects' %}">Проекты</a>
+          {% if request.user.is_authenticated %}
+          <a class="link-1" href="{% url 'inbox' %}">Сообщения</a>
+          <a class="link-1" href="{% url 'account' %}">Профиль</a>
+          <a class="link-1" href="{% url 'logout' %}" class="btn btn--sub">Выйти</a>
+          {% else %}
+          <a class="link-1" href="{% url 'login' %}" class="btn btn--sub">Войти/Зарегистироваться</a>
+          {% endif %}
+        </ul>
+      </nav>
+  </header> 
